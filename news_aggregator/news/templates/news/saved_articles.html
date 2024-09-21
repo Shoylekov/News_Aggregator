@@ -1,0 +1,21 @@
+{% extends 'news/base.html' %}
+
+{% block title %}Saved Articles{% endblock %}
+
+{% block content %}
+<h2>Your Saved Articles</h2>
+<ul>
+    {% for article in articles %}
+        <li>
+            <a href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+            <p>{{ article.description }}</p>
+            <form action="{% url 'remove_saved_article' article.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="remove-button">Remove</button>
+            </form>
+        </li>
+    {% empty %}
+        <p>No saved articles found.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

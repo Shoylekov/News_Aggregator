@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Preferences</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Set Your Preferences</h2>
+        <form method="POST" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="topics">Topics:</label>
+                <input type="text" name="topics" id="topics" class="form-control" value="{{ profile.topics }}">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Save Preferences</button>
+        </form>
+    </div>
+</body>
+</html>
